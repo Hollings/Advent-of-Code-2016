@@ -1,0 +1,34 @@
+import hashlib
+
+input = "wtnhxymk"
+input="wtnhxymk"
+m = hashlib.md5()
+# m.update(input.encode())
+# print(m.hexdigest())
+found = False
+i=0
+answer = ["","","","","","","",""]
+count = 0
+
+while(count<8):
+	check = input+str(i)
+	m = hashlib.md5()
+	m.update(check.encode())
+
+	if(str(m.hexdigest())[:5] == "00000"):
+		try:
+			if answer[int(m.hexdigest()[5])]=="":
+				answer[int(m.hexdigest()[5])] = m.hexdigest()[6]
+				count+=1
+			else:
+				pass
+		except:
+			pass
+
+	# So my computer doesn't crash
+	if i>99000000:
+    break
+    
+	i+=1
+
+print("".join(answer))
